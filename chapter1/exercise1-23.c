@@ -1,9 +1,6 @@
 #include <stdio.h>
 
-/* program fold long input lines into two or more shorter lines after the last
- * non-blank character that occurs before the n-th column of input*/
-
-int getchar_equals(int *c, int equals);
+/* program to remove comments from C program */
 
 int main()
 {
@@ -11,7 +8,7 @@ int main()
     
     spaces = escaped = 0;
     
-    while ((c = getchar()) != EOF) {
+    while (c != EOF && (c = getchar()) != EOF) {
         
         /* handle comments */
         if (c == '/') {
