@@ -131,7 +131,8 @@ int getop(char s[])
     int i, c;
     static int buffer = EOF;
 
-    while ((s[0] = c = (buffer == EOF ? getchar() : buffer)) == ' ' || c == '\t') buffer = EOF;
+    while ((s[0] = c = (buffer == EOF ? getchar() : buffer)) == ' ' || c == '\t')
+        buffer = EOF;
 
     s[1] = '\0';
 

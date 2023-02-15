@@ -1,7 +1,8 @@
 #include <stdio.h>
 #define TABSTOP 4
 
-/* program detab that replaces tabs in the input with the proper number of blanks to space to the next stop. Assume a fixed set of tab stops every n columns */
+/* program detab that replaces tabs in the input with the proper number of blanks to space to the next stop. Assume a
+ * fixed set of tab stops every n columns */
 
 int c, col;
 
@@ -21,11 +22,11 @@ void detab()
         for (i = 0; i < TABSTOP - col; ++i)
             putchar(' ');
         col = 0;
-     } else {
+    } else {
         putchar(c);
         if (c == '\n')
             col = 0;
-     }
-     if (++col == TABSTOP)
-         col = 0;
+    }
+    if (++col == TABSTOP)
+        col = 0;
 }

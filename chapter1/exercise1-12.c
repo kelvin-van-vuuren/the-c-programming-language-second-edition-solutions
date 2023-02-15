@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define IN 1  /* inside a word */
+#define IN 1 /* inside a word */
 #define OUT 0 /* outside a word */
 
 /* print input one word per line */

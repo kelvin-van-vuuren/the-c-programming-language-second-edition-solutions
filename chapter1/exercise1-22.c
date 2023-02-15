@@ -7,7 +7,7 @@
 int main()
 {
     int c, col, blanks;
-    
+
     col = blanks = 0;
     while ((c = getchar()) != EOF) {
         ++col;

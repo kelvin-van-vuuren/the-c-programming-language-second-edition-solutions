@@ -1,6 +1,3 @@
 #include <stdio.h>
 
-int main()
-{
-    printf("%d", EOF);
-}
+int main() { printf("%d", EOF); }

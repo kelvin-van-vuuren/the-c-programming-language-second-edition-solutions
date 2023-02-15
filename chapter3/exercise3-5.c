@@ -6,7 +6,6 @@
  * character representation in the string s. In particular, itob(n, s, 16)
  * formats n as a hexadecimal integer in s */
 
-
 /* base conversion can be done by dividing n by the base, storing the remainder,
  * repeating until n == 0, then reversing the order of the sequence of
  * remainders. Each time the remainder is stored this will need to be converted
@@ -31,7 +30,7 @@ main()
     itob(n, s, b);
 
     printf("%d to base %d is: %s\n", n, b, s);
-    
+
     n = -16;
     itob(n, s, b);
     printf("%d to base %d is: %s\n", n, b, s);
@@ -40,25 +39,24 @@ main()
     b = 32;
     itob(n, s, b);
     printf("%d to base %d is: %s\n", n, b, s);
-
 }
 
 void itob(int n, char s[], int b)
 {
     int i, negative;
-    
+
     negative = n < 0;
-    
+
     i = 0;
     do {
         s[i++] = itoc(abs(n % b));
     } while ((n /= b) != 0);
-    
+
     if (negative)
         s[i++] = '-';
-        
+
     s[i] = '\0';
-    
+
     reverse(s);
 }
 
@@ -70,12 +68,12 @@ char itoc(int n)
     return n + 'a' - 10;
 }
 
-void reverse(char line[]) 
+void reverse(char line[])
 {
     int i, j, temp, len;
 
     len = strlen(line) - 1;
-    
+
     for (i = 0, j = len; i <= j; ++i, --j) {
         temp = line[i];
         line[i] = line[j];

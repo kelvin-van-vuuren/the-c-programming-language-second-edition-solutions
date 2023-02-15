@@ -19,7 +19,7 @@ int main()
 void entab()
 {
     int i, nb, nt;
-    
+
     if (c == ' ') {
         ++blanks;
         if (col % TABSTOP == 0) {

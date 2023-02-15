@@ -1,13 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /* add commands to print the top element of the stack without popping, to
  * duplicate it, and to swap the top two elements. Add a command to clear the
  * stack */
 
-#define MAXOP 100  /* max size of operand or operator */
+#define MAXOP 100 /* max size of operand or operator */
 #define NUMBER '0' /* signal that a number was found */
 
 #define MAXVAL 100 /* maximum depth of val stack */
@@ -101,48 +101,45 @@ main()
 int getop(char s[])
 {
     int i, c;
-    
+
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
-            
+
     s[1] = '\0';
     if (!isdigit(c) && c != '.' && c != '-')
         return c; /* not a number */
-    
+
     i = 0;
-    if (c == '-')  { /* check if negative number */
+    if (c == '-') { /* check if negative number */
         if (!isdigit(c = getch())) {
             ungetch(c);
             return '-';
         }
         s[++i] = c;
     }
-            
+
     if (isdigit(c)) /* collect integer part */
         while (isdigit(s[++i] = c = getch()))
             ;
-            
+
     if (c == '.') /* collect fraction part */
         while (isdigit(s[++i] = c = getch()))
             ;
-    
+
     s[i] = '\0';
     if (c != EOF)
         ungetch(c);
-    
+
     return NUMBER;
 }
 
-int getch()
-{
-    return (bufp > 0) ? buf[--bufp] : getchar();
-}
+int getch() { return (bufp > 0) ? buf[--bufp] : getchar(); }
 
-void ungetch(int c) 
+void ungetch(int c)
 {
     if (bufp < BUFSIZE)
         buf[bufp++] = c;
-    else 
+    else
         printf("ungetch: too many characters\n");
 }
 
@@ -167,7 +164,7 @@ double pop()
 void print_top()
 {
     if (sp > 0)
-        printf("Top element of stack: %.8g\n", val[sp - 1]); 
+        printf("Top element of stack: %.8g\n", val[sp - 1]);
     else
         printf("error: can't print top of stack, stack empty\n");
 }
@@ -176,14 +173,14 @@ void duplicate()
 {
     if (sp > 0)
         push(val[sp - 1]);
-    else 
+    else
         printf("error: cannot duplicate top element, stack empty\n");
 }
 
 void swap()
 {
     int temp;
-    
+
     if (sp > 1) {
         temp = val[sp - 1];
         val[sp - 1] = val[sp - 2];
@@ -193,7 +190,4 @@ void swap()
     }
 }
 
-void clear()
-{
-    sp = 0;
-}
+void clear() { sp = 0; }

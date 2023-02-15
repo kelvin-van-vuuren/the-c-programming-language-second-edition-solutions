@@ -1,11 +1,11 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 /* extend polish notation calculator program to handle modulus operator and
  * negative number */
 
-#define MAXOP 100  /* max size of operand or operator */
+#define MAXOP 100 /* max size of operand or operator */
 #define NUMBER '0' /* signal that a number was found */
 
 #define MAXVAL 100 /* maximum depth of val stack */
@@ -73,48 +73,45 @@ main()
 int getop(char s[])
 {
     int i, c;
-    
+
     while ((s[0] = c = getch()) == ' ' || c == '\t')
         ;
-            
+
     s[1] = '\0';
     if (!isdigit(c) && c != '.' && c != '-')
         return c; /* not a number */
-    
+
     i = 0;
-    if (c == '-')  { /* check if negative number */
+    if (c == '-') { /* check if negative number */
         if (!isdigit(c = getch())) {
             ungetch(c);
             return '-';
         }
         s[++i] = c;
     }
-            
+
     if (isdigit(c)) /* collect integer part */
         while (isdigit(s[++i] = c = getch()))
             ;
-            
+
     if (c == '.') /* collect fraction part */
         while (isdigit(s[++i] = c = getch()))
             ;
-    
+
     s[i] = '\0';
     if (c != EOF)
         ungetch(c);
-    
+
     return NUMBER;
 }
 
-int getch()
-{
-    return (bufp > 0) ? buf[--bufp] : getchar();
-}
+int getch() { return (bufp > 0) ? buf[--bufp] : getchar(); }
 
-void ungetch(int c) 
+void ungetch(int c)
 {
     if (bufp < BUFSIZE)
         buf[bufp++] = c;
-    else 
+    else
         printf("ungetch: too many characters\n");
 }
 

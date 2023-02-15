@@ -8,8 +8,8 @@ int remove_trailing_whitespace(char line[], int len);
 
 int main()
 {
-    int len;                /* current line length */
-    char line[MAXLINE];     /* current input line */
+    int len; /* current line length */
+    char line[MAXLINE]; /* current input line */
 
     while ((len = _getline(line, MAXLINE)) > 0) {
         len = remove_trailing_whitespace(line, len);
@@ -25,7 +25,7 @@ int _getline(char line[], int maxline)
 {
     int c, i;
 
-    for(i = 0; i < maxline - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+    for (i = 0; i < maxline - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
         line[i] = c;
 
     if (c == '\n')
@@ -40,10 +40,10 @@ int _getline(char line[], int maxline)
 int remove_trailing_whitespace(char line[], int len)
 {
     int i;
-    
+
     for (i = len - 2; i >= 0 && (line[i] == ' ' || line[i] == '\t'); --i)
         ;
-        
+
     line[++i] = '\0';
 
     return ++i;

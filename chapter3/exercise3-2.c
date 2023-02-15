@@ -14,12 +14,12 @@ int main()
 {
     char s[] = "Hello\nWorld\t\\";
     char t[MAX_LEN], t2[MAX_LEN];
-    
+
     printf("original string:\n\"%s\"\n", s);
-    
+
     escape(s, t);
     printf("\nescaped:\n\"%s\"\n", t);
-    
+
     unescape(t, t2);
     printf("\nunescaped:\n\"%s\"\n", t2);
 }
@@ -44,11 +44,11 @@ void escape(char s[], char t[])
         }
     }
 }
-    
+
 void unescape(char s[], char t[])
 {
     int i, j;
-    
+
     for (i = 0, j = 0; (t[j] = s[i]) != '\0'; ++i, ++j) {
         if (t[j] == '\\' && s[++i] != '\0') {
             switch (s[i]) {
@@ -61,7 +61,7 @@ void unescape(char s[], char t[])
                 default:
                     t[++j] = s[i];
                     break;
-            } 
+            }
         }
     }
 }

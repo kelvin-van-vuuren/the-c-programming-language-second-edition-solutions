@@ -12,7 +12,7 @@
 void itoa(int n, char s[], int width);
 void reverse(char line[]);
 
-main() 
+main()
 {
     int n, w;
     char s[MAXLEN];
@@ -22,17 +22,17 @@ main()
 
     itoa(n, s, w);
     printf("%s\n", s);
-    
+
     n = -10;
     itoa(n, s, w);
     printf("%s\n", s);
-    
+
     n = INT_MIN;
     itoa(n, s, w);
     printf("%s\n", s);
 }
 
-void itoa(int n, char s[], int width) 
+void itoa(int n, char s[], int width)
 {
     int i, negative;
 
@@ -48,13 +48,13 @@ void itoa(int n, char s[], int width)
 
     while (i < width)
         s[i++] = ' ';
-        
+
     s[i] = '\0';
 
     reverse(s);
 }
 
-void reverse(char line[]) 
+void reverse(char line[])
 {
     int i, j, temp, len;
 

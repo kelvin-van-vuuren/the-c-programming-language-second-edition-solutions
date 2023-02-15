@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 
 /* extend atof to handle scientific notation of the form 123.45e-6 where a
  * floating point number may be followed by e or E and an optionally signed
@@ -17,7 +17,7 @@ main()
 
     char s3[] = "11.973e6";
     printf("String '%s' converted to double %f\n", s3, atof(s3));
-    
+
     char s4[] = "-11.973e6";
     printf("String '%s' converted to double %f\n", s4, atof(s4));
 }
@@ -26,7 +26,7 @@ double atof(char s[])
 {
     double val, power, exppower;
     int i, j, sign, expsign, exp;
-    
+
     for (i = 0; isspace(s[i]); ++i) /* skip whitespace */
         ;
 
@@ -36,7 +36,7 @@ double atof(char s[])
 
     for (val = 0.; isdigit(s[i]); ++i)
         val = 10. * val + (s[i] - '0');
-        
+
     if (s[i] == '.')
         ++i;
 
@@ -44,7 +44,7 @@ double atof(char s[])
         val = 10. * val + (s[i] - '0');
         power *= 10.;
     }
-    
+
     power = 1 / power;
 
     if (s[i] == 'e' || s[i] == 'E') {
@@ -55,11 +55,11 @@ double atof(char s[])
 
         for (exp = 0; isdigit(s[i]); ++i)
             exp = 10 * exp + (s[i] - '0');
-        
+
         exppower = 1.;
         for (j = 0; j < exp; ++j)
             exppower *= 10.;
-            
+
         if (expsign == -1)
             exppower = 1 / exppower;
 

@@ -8,13 +8,13 @@ unsigned invert(unsigned x, int p, int n);
 
 int main()
 {
-    //11001111 = 128 + 64 + 8 + 4 + 2 +1
+    // 11001111 = 128 + 64 + 8 + 4 + 2 +1
     unsigned x = 207;
-    
-    //11111111 = 255
+
+    // 11111111 = 255
     printf("%d\n", invert(x, 5, 2));
-    
-    //invert back
+
+    // invert back
     x = 255;
     printf("%d\n", invert(x, 5, 2));
 }

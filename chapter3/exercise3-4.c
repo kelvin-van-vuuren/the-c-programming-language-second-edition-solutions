@@ -35,12 +35,12 @@
  * However, since wordsize = 4 this gets truncated to 1000 which is -8.
  *
  * Since INT_MIN *= -1 == INT_MIN, the modulo operation will return a negative
- * digit. 
+ * digit.
  * Converting a single integer digit to its char equivalent relies on the
  * fact that the ASCII values for digits 0-9 are sequential. ie: '0' == 48, '1'
  * == 49 ... '9' == 57, hence 1 + '0' = 49 == '1'.
- * Adding the integer ASCII value for the character '0' to a negative digit will 
- * not produce the correct value for that digit's character. eg -1 + '0' = 47 
+ * Adding the integer ASCII value for the character '0' to a negative digit will
+ * not produce the correct value for that digit's character. eg -1 + '0' = 47
  * which represents '/' in ASCII.
  *
  * We can solve this problem by taking the absolute value of n % 10 and omitting
@@ -54,18 +54,18 @@
 void itoa(int n, char s[]);
 void reverse(char line[]);
 
-main() 
+main()
 {
     int n;
     char s[MAXLEN];
 
     n = INT_MIN;
-    
+
     itoa(n, s);
     printf("%s\n", s);
 }
 
-void itoa(int n, char s[]) 
+void itoa(int n, char s[])
 {
     int i, negative;
 
@@ -84,12 +84,12 @@ void itoa(int n, char s[])
     reverse(s);
 }
 
-void reverse(char line[]) 
+void reverse(char line[])
 {
     int i, j, temp, len;
 
     len = strlen(line) - 1;
-    
+
     for (i = 0, j = len; i <= j; ++i, --j) {
         temp = line[i];
         line[i] = line[j];

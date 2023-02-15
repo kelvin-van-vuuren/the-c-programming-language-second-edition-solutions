@@ -25,7 +25,7 @@ int main()
     clock_t start, diff;
     int i, msec;
     int v[ARRAY_SIZE];
-    
+
     for (i = 0; i < ARRAY_SIZE; ++i)
         v[i] = i;
 
@@ -34,21 +34,21 @@ int main()
         binsearch(i, v, ARRAY_SIZE);
     diff = clock() - start;
     msec = diff * 1000 / CLOCKS_PER_SEC;
-    printf("Binary search version 1 time taken: %d seconds %d milliseconds\n", msec/1000, msec%1000);
-        
+    printf("Binary search version 1 time taken: %d seconds %d milliseconds\n", msec / 1000, msec % 1000);
+
     start = clock();
     for (i = 0; i < ARRAY_SIZE; ++i)
         binsearch2(i, v, ARRAY_SIZE);
     diff = clock() - start;
     msec = diff * 1000 / CLOCKS_PER_SEC;
-    printf("Binary search version 2 time taken: %d seconds %d milliseconds\n", msec/1000, msec%1000);
-    
+    printf("Binary search version 2 time taken: %d seconds %d milliseconds\n", msec / 1000, msec % 1000);
+
     start = clock();
     for (i = 0; i < ARRAY_SIZE; ++i)
         binsearch_original(i, v, ARRAY_SIZE);
     diff = clock() - start;
     msec = diff * 1000 / CLOCKS_PER_SEC;
-    printf("Binary search original version time taken: %d seconds %d milliseconds\n", msec/1000, msec%1000);
+    printf("Binary search original version time taken: %d seconds %d milliseconds\n", msec / 1000, msec % 1000);
 }
 
 /* Version 1: keeps looping until low == high. At this point v[mid] will equal x
@@ -60,13 +60,13 @@ int binsearch(int x, int v[], int n)
     low = 0;
     high = n - 1;
     while (low < high) {
-        mid = (low + high) / 2; 
+        mid = (low + high) / 2;
         if (x < v[mid])
             high = mid - 1;
-        else 
+        else
             low = mid + 1;
     }
-    
+
     return (v[mid] == x) ? mid : -1;
 }
 
@@ -79,15 +79,15 @@ int binsearch2(int x, int v[], int n)
 
     low = 0;
     high = n - 1;
-    mid = (low + high) / 2; 
+    mid = (low + high) / 2;
     while (low < high && v[mid] != x) {
-        mid = (low + high) / 2; 
+        mid = (low + high) / 2;
         if (x < v[mid])
             high = mid - 1;
-        else 
+        else
             low = mid + 1;
     }
-    
+
     return (v[mid] == x) ? mid : -1;
 }
 
@@ -99,14 +99,14 @@ int binsearch_original(int x, int v[], int n)
     low = 0;
     high = n - 1;
     while (low <= high) {
-        mid = (low + high) / 2; 
+        mid = (low + high) / 2;
         if (x < v[mid])
             high = mid - 1;
         else if (x > v[mid])
             low = mid + 1;
-        else    /* found match */
+        else /* found match */
             return mid;
     }
-    
+
     return -1;
 }
