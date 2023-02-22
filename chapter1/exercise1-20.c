@@ -4,6 +4,9 @@
 /* program detab that replaces tabs in the input with the proper number of blanks to space to the next stop. Assume a
  * fixed set of tab stops every n columns */
 
+/* Run using: ./a.out < exercise1-20.c.input
+ * replace putchar(' ') with putchar('_') to more easily see effect */
+
 int c, col;
 
 void detab();
@@ -24,9 +27,7 @@ void detab()
         col = 0;
     } else {
         putchar(c);
-        if (c == '\n')
+        if (c == '\n' || ++col == TABSTOP)
             col = 0;
     }
-    if (++col == TABSTOP)
-        col = 0;
 }
