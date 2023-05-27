@@ -18,10 +18,10 @@ int bufp = 0; /* next free position in buf */
 int getch();
 void ungetch(int c);
 
-void main() 
-{ 
+void main()
+{
     int pn, rc;
-    
+
     while ((rc = getint(&pn)) != EOF)
         if (rc == NOT_NUMBER)
             printf("getint: Not a number\n");
